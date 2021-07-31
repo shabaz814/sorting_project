@@ -1,7 +1,7 @@
 from flask import Flask,jsonify
 import paho.mqtt.client as mqtt
-import datetime
-message={"devmac":"","EPC":"","Formatted UTC time":""}
+#import datetime
+message={"devmac":"","EPC":""}#"Formatted UTC time":""}
 def on_connect(client,userdata,flags,rc):
     print("the device is connected to the server successfully wit rc:"+str(rc))
     client.subscribe("Technologics_sorting1")
@@ -12,7 +12,7 @@ def on_message(client,userdata,msg):
     json_data=dict(my_str)
     message["devmac"]=json_data["devmac"]
     message["EPC"]=json_data["reads"][0]["EPC"]
-    message["Formatted UTC time"]=datetime.datetime.now()
+    #message["Formatted UTC time"]=datetime.datetime.now()
 client=mqtt.Client()
 client.on_connect=on_connect
 client.on_message=on_message
