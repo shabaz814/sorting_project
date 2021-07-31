@@ -25,6 +25,6 @@ def fun():
 client.loop_start()
 try:
     if __name__  ==  "__main__":
-        app.run(debug=True)
+        app.run(debug=False)
 except:
     client.loop_stop(force=False)
